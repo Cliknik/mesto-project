@@ -1,0 +1,19 @@
+.elements__like {
+  grid-area: like;
+  background-color: transparent;
+  border: none;
+  background-image: url(../../../images/button-like_disabled.svg);
+  height: 19px;
+  width: 22px;
+  align-self: center;
+  justify-self: end;
+  margin-right: 20px;
+}
+
+.elements__like:hover {
+  background-image: url(../../../images/button-like_hover.svg);
+}
+
+.elements__like:active {
+  background-image: url(../../../images/button-like_active.svg);
+}

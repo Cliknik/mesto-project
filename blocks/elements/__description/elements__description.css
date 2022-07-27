@@ -1,0 +1,10 @@
+.elements__description {
+  margin: 0;
+  grid-area: description;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  align-self: center;
+  padding-left: 21px;
+}

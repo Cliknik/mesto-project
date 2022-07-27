@@ -1,0 +1,10 @@
+.edit-form {
+  height: 330px;
+  width: 440px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+}

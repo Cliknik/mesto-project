@@ -1,0 +1,43 @@
+@import "../vendor/normalize.css";
+@import "../vendor/inter.css";
+
+@import "../blocks/body/body.css";
+
+@import "../blocks/page/page.css";
+
+@import "../blocks/header/header.css";
+@import "../blocks/header/__logo/header__logo.css";
+
+@import "../blocks/content/content.css";
+
+@import "../blocks/profile/profile.css";
+@import "../blocks/profile/__avatar/profile__avatar.css";
+@import "../blocks/profile/__description/profile__description.css";
+@import "../blocks/profile/__name/profile__name.css";
+@import "../blocks/profile/__about/profile__about.css";
+@import "../blocks/profile/__edit-button/profile__edit-button.css";
+@import "../blocks/profile/__add-content/profile__add-content.css";
+
+@import "../blocks/elements/elements.css";
+@import "../blocks/elements/__card/elements__card.css";
+@import "../blocks/elements/__image/elements__image.css";
+@import "../blocks/elements/__description/elements__description.css";
+@import "../blocks/elements/__like/elements__like.css";
+
+@import "../blocks/footer/footer.css";
+
+@import "../blocks/popup/popup.css";
+@import "../blocks/popup/_opened/popup_opened.css";
+@import "../blocks/popup/__container/popup__container.css";
+
+@import "../blocks/edit-form/edit-form.css";
+@import "../blocks/edit-form/__title/edit-form__title.css";
+@import "../blocks/edit-form/__user-info/edit-form__user-info.css";
+@import "../blocks/edit-form/__input/edit-form__input.css";
+@import "../blocks/edit-form/__submit-button/edit-form__submit-button.css";
+@import "../blocks/edit-form/__close-button/edit-form__close-button.css";
+
+@import "../blocks/footer/footer.css";
+@import "../blocks/footer/__text/footer__text.css";
+
+

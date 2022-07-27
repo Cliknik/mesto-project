@@ -1,0 +1,6 @@
+.edit-form__user-info {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+}

@@ -1,0 +1,7 @@
+.elements__image {
+  grid-area: image;
+  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
+  background-color: transparent;
+  }
