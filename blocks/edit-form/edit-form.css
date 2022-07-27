@@ -8,3 +8,10 @@
   background-color: white;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 918px) {
+  .edit-form {
+    height: 322px;
+    width: 282px;
+  }
+}

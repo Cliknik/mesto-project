@@ -10,9 +10,20 @@
   height: 50px;
   margin-bottom: 37px;
   align-self: center;
+
 }
 
 .edit-form__submit-button:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+@media screen and (max-width: 918px) {
+  .edit-form__submit-button {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 25px;
+  }
 }

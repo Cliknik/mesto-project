@@ -2,16 +2,22 @@
   margin-left: auto;
   background-color: transparent;
   background-image: url(../../../images/add-button.png);
-  object-fit: fill;
   border: none;
   width: 150px;
   height: 50px;
   cursor: pointer;
-  background-repeat: no-repeat;
   transition: 0.2s;
 }
 
 .profile__add-content:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width:918px) {
+  .profile__add-content {
+  background-image: url(../../../images/add-button_big.png);
+  margin: 36px auto 0;
+  width: 282px;
+  }
 }
 

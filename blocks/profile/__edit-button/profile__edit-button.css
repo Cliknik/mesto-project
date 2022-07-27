@@ -19,5 +19,6 @@
     width: 18px;
     margin-left: 10px;
     object-fit: scale-down;
+    background-image: url(../../../images/edit-button-mini.png);
   }
 }

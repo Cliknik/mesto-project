@@ -7,3 +7,12 @@
   height: 23px;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 918px) {
+  .edit-form__title {
+    font-size: 18px;
+    line-height: 22px;
+    box-sizing: content-box;
+    margin: 25px 0 0 22px;
+  }
+}
