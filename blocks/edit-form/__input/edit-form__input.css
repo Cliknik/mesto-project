@@ -1,14 +1,13 @@
 .edit-form__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0 0 13px;
+  padding: 0 0 9px;
   font-size: 14px;
   line-height: 17px;
   color: black;
   text-align: left;
   max-width: 358px;
-  max-height: 27px;
-  margin: 54px 0 30px 36px;
+  margin: 48px 0 30px 36px;
   box-sizing: border-box;
   outline: none;
 }

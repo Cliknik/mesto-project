@@ -22,59 +22,62 @@
     <main class="content">
       <section class="profile">
           <img src="./images/image__avatar.jpg" alt="Аватар" class="profile__avatar">
-          <div class="profile__description">
-            <h1 class="profile__name">Жак-Ив Кусто<button class="profile__edit-button"></button></h1>
-            <h2 class="profile__about">Исследователь океана</h2>
-          </div>
-        <button class="profile__add-content"></button>
+            <div class="profile__user-info">
+              <div class="profile__description">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <p class="profile__about">Исследователь океана</p>
+              </div>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+        <button class="profile__add-content" type="button"></button>
       </section>
-      <section class="elements">
-        <div class="elements__card">
+      <ul class="elements">
+        <li class="elements__card">
           <img src="./images/__image1.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Карачаевск</h2>
-          <button class="elements__like"></button>
-        </div>
-        <div class="elements__card">
+          <button class="elements__like" type="button"></button>
+        </li>
+        <li class="elements__card">
           <img src="./images/__image2.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
-        </div>
-        <div class="elements__card">
+          <button class="elements__like" type="button"></button>
+        </li>
+        <li class="elements__card">
           <img src="./images/__image3.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Домбай</h2>
-          <button class="elements__like"></button>
-        </div>
-        <div class="elements__card">
+          <button class="elements__like" type="button"></button>
+        </li>
+        <li class="elements__card">
           <img src="./images/__image4.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
-        </div>
-        <div class="elements__card">
+          <button class="elements__like" type="button"></button>
+        </li>
+        <li class="elements__card">
           <img src="./images/__image5.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Домбай</h2>
-          <button class="elements__like"></button>
-        </div>
-        <div class="elements__card">
+          <button class="elements__like" type="button"></button>
+        </li>
+        <li class="elements__card">
           <img src="./images/__image6.jpg" alt="Фото пользователя" class="elements__image">
           <h2 class="elements__description">Карачаево-Черкесия</h2>
-          <button class="elements__like"></button>
-        </div>
-      </section>
+          <button class="elements__like" type="button"></button>
+        </li>
+      </ul>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup popup_opened">
+  <div class="popup">
     <div class="popup__container">
-      <form class="edit-form">
-        <h3 class="edit-form__title">Редактировать профиль</h3>
+      <form class="edit-form" name="user-info">
+        <h2 class="edit-form__title">Редактировать профиль</h2>
         <fieldset class="edit-form__user-info">
           <input type="text" class="edit-form__input" name="name" value="Жак-Ив Кусто">
           <input type="text" class="edit-form__input" name="about" value="Исследователь океана">
           <button class="edit-form__submit-button" type="submit">Сохранить</button>
         </fieldset>
-        <button class="edit-form__close-button"></button>
+        <button class="edit-form__close-button" type="button"></button>
       </form>
     </div>
   </div>

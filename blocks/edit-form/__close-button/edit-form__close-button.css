@@ -1,6 +1,6 @@
 .edit-form__close-button {
   background-color: transparent;
-  background-image: url(../../../images/close-Icon_active.png);
+  background-image: url(../../../images/close-button.svg);
   border:none;
   position: absolute;
   top: -40px;
@@ -8,17 +8,19 @@
   height: 32px;
   width: 32px;
   background-repeat: no-repeat;
+  transition: 0.2s;
 }
 
 .edit-form__close-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 918px) {
   .edit-form__close-button {
     right: 0;
     top: -36px;
-    background-image: url(../../../images/close-Icon_active_mini.png);
+    background-image: url(../../../images/close-button_mini.svg);
     height: 20px;
     width: 20px;
   }

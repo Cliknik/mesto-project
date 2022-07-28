@@ -1,6 +1,6 @@
 .edit-form {
-  height: 330px;
-  width: 440px;
+  min-height: 330px;
+  width: 430px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 918px) {
   .edit-form {
-    height: 322px;
+    min-height: 322px;
     width: 282px;
   }
 }

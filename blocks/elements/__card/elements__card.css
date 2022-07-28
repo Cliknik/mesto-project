@@ -11,4 +11,6 @@
   grid-template-areas:
     "image image"
     "description like";
+  padding-left: 0;
+  list-style: none;
 }
