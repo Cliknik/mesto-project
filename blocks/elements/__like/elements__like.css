@@ -13,6 +13,7 @@
 
 .elements__like:hover {
   background-image: url(../../../images/button-like_hover.svg);
+  cursor: pointer;
 }
 
 .elements__like:active {
