@@ -9,6 +9,7 @@
   justify-self: end;
   margin-right: 20px;
   background-repeat: no-repeat;
+  transition: background-image 0.2s;
 }
 
 .elements__like:hover {
