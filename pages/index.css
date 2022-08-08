@@ -22,6 +22,8 @@
 @import "../blocks/elements/__image/elements__image.css";
 @import "../blocks/elements/__description/elements__description.css";
 @import "../blocks/elements/__like/elements__like.css";
+@import "../blocks/elements/__like/_status/elements__like_status_active.css";
+@import "../blocks/elements/__like/_status/elements__like_status_inactive.css";
 
 @import "../blocks/footer/footer.css";
 
