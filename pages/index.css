@@ -19,6 +19,7 @@
 
 @import "../blocks/elements/elements.css";
 @import "../blocks/elements/__card/elements__card.css";
+@import "../blocks/elements/__delete-item/elements__delete-item.css";
 @import "../blocks/elements/__image/elements__image.css";
 @import "../blocks/elements/__description/elements__description.css";
 @import "../blocks/elements/__like/elements__like.css";
