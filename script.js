@@ -85,6 +85,8 @@ $profileSubmitBtn.addEventListener('click', editProfile);
 
 function openCloseAddElement () {
   $popupAddElement.classList.toggle('popup_opened');
+  $popupAddElement.querySelector('.edit-form__input[name=description]').value = "Ссылка на картинку";
+  $popupAddElement.querySelector('.edit-form__input[name=link]').value = "Название";
 }
 $addElementBtn.addEventListener('click', openCloseAddElement);
 $closeAddElementBtn.addEventListener('click', openCloseAddElement);
