@@ -39,12 +39,7 @@ const initialCards = [
 ];
 
 function loadCards() {
-  $elements.innerHTML = initialCards.map(card => ` <li class="elements__card">
-          <button class="elements__delete-item" type="button"></button>
-          <img src="${card.link}" class="elements__image" alt="Фото ${card.name}">
-          <h2 class="elements__description">${card.name}</h2>
-          <button class="elements__like elements__like_status_inactive" type="button"></button>
-        </li>`).join('');
+  initialCards.map(card => addCard(card.name, card.link));
 
 }
 loadCards();
@@ -85,8 +80,8 @@ $profileSubmitBtn.addEventListener('click', editProfile);
 
 function openCloseAddElement () {
   $popupAddElement.classList.toggle('popup_opened');
-  $popupAddElement.querySelector('.edit-form__input[name=description]').value = "Ссылка на картинку";
-  $popupAddElement.querySelector('.edit-form__input[name=link]').value = "Название";
+  $popupAddElement.querySelector('.edit-form__input[name=description]').value = "";
+  $popupAddElement.querySelector('.edit-form__input[name=link]').value = "";
 }
 $addElementBtn.addEventListener('click', openCloseAddElement);
 $closeAddElementBtn.addEventListener('click', openCloseAddElement);
@@ -116,7 +111,7 @@ $addElementSubmitBtn.addEventListener('click', function(evt) {
   const link = $popupAddElement.querySelector('.edit-form__input[name=link]');
   addCard(description.value, link.value);
   $popupAddElement.classList.remove('popup_opened');
-  description.value = "Название";
-  link.value = "Ссылка на картинку";
+  description.value = "";
+  link.value = "";
 });
 
