@@ -1,5 +1,4 @@
 const $elements = document.querySelector('.elements');
-let $element = $elements.querySelectorAll('.elements__card');
 const initialCards = [
   {
     name: 'Архыз',
@@ -37,3 +36,4 @@ function loadCards() {
 
 }
 loadCards();
+

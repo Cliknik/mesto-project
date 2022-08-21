@@ -2,7 +2,3 @@
   background-image: url(../../../../images/button-like_disabled.svg);
 }
 
-.elements__like_status_inactive:hover {
-  background-image: url(../../../../images/button-like_hover.svg);
-  cursor: pointer;
-}

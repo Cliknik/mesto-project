@@ -68,7 +68,7 @@
       <p class="footer__text">© 2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup" id="profile-edit">
     <div class="popup__container">
       <form class="edit-form" name="user-info">
         <h2 class="edit-form__title">Редактировать профиль</h2>
@@ -81,8 +81,30 @@
       </form>
     </div>
   </div>
+  <div class="popup" id="add-content">
+    <div class="popup__container">
+      <form class="edit-form" name="content-info">
+        <h2 class="edit-form__title">Новое место</h2>
+        <fieldset class="edit-form__user-info">
+          <input type="text" class="edit-form__input" name="description" value="Название">
+          <input type="text" class="edit-form__input" name="link" value="Ссылка на картинку">
+          <button class="edit-form__submit-button" type="submit">Сохранить</button>
+        </fieldset>
+        <button class="edit-form__close-button" type="button"></button>
+      </form>
+    </div>
+  </div>
+<template id="card-template">
+  <li class="elements__card">
+    <button class="elements__delete-item" type="button"></button>
+    <img src="" class="elements__image" alt="">
+    <h2 class="elements__description"></h2>
+    <button class="elements__like elements__like_status_inactive" type="button"></button>
+  </li>
+</template>
+  <script src="./script.js"></script>
+
 </body>
-<script src="./cardsLoader.js"></script>
-<script src="./pop-up.js"></script>
+
 </html>
 
