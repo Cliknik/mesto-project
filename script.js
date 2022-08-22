@@ -116,6 +116,7 @@ function addCard (descriptionValue, imageLinkValue) {
     $fullScreenImage.style.visibility = 'visible';
     $fullScreenImage.style.opacity = '1';
     document.querySelector('.popup__fullscreen-image').src = imageLinkValue;
+    document.querySelector('.popup__fullscreen-image').alt = `Фото ${descriptionValue}`;
     document.querySelector('.popup__image-capture').textContent = descriptionValue;
     document.querySelector('.popup__image-close').addEventListener('click', function (){
       $fullScreenImage.style.visibility = 'hidden';
@@ -125,7 +126,7 @@ function addCard (descriptionValue, imageLinkValue) {
 
   cardElement.querySelector('.elements__description').textContent = descriptionValue;
   cardElement.querySelector('.elements__image').src = imageLinkValue;
-  cardElement.querySelector('.elements__image').setAttribute('alt', descriptionValue);
+  cardElement.querySelector('.elements__image').setAttribute('alt', `Фото ${descriptionValue}`);
   $elements.prepend(cardElement);
 }
 
