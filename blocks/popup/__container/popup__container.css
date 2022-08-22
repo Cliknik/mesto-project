@@ -1,12 +1,6 @@
 .popup__container {
-  position: fixed;
-  top: calc(50vh - 165px);
-  left: calc(50% - 215px);
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
 }
 
-@media screen and (max-width: 918px) {
-  .popup__container {
-    top: calc(50vh - 161px);
-    left: calc(50% - 141px);
-  }
-}

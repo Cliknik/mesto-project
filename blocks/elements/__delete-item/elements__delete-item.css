@@ -5,7 +5,7 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: center url(../../../images/delete-element-button-active.svg) transparent;
+  background: center url(../../../images/delete-element-button-active.svg) transparent no-repeat;
   transition: opacity 0.2s;
   border: none;
 }

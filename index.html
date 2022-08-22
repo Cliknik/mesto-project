@@ -52,6 +52,15 @@
       </form>
     </div>
   </div>
+  <div class ="popup" id="fullscreen-image">
+    <div class="popup__container">
+      <figure class="popup__image-container">
+        <button class="popup__image-close" type="button"></button>
+        <img src="" alt="" class="popup__fullscreen-image">
+        <figcaption class="popup__image-capture"></figcaption>
+      </figure>
+    </div>
+  </div>
   <div class="popup" id="add-content">
     <div class="popup__container">
       <form class="edit-form" name="content-info">
@@ -68,7 +77,7 @@
 <template id="card-template">
   <li class="elements__card">
     <button class="elements__delete-item" type="button"></button>
-    <img src="" class="elements__image" alt="">
+    <img src="" class="elements__image">
     <h2 class="elements__description"></h2>
     <button class="elements__like elements__like_status_inactive" type="button"></button>
   </li>

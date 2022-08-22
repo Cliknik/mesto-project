@@ -11,6 +11,7 @@ const $closeAddElementBtn = $popupAddElement.querySelector('.edit-form__close-bu
 const $addElementSubmitBtn = $popupAddElement.querySelector('.edit-form__submit-button');
 const $addElementBtn = document.querySelector('.profile__add-content');
 const $elements = document.querySelector('.elements');
+const $fullScreenImage = document.querySelector('#fullscreen-image')
 const initialCards = [
   {
     name: 'Архыз',
@@ -99,9 +100,19 @@ function addCard (descriptionValue, imageLinkValue) {
     const card = deleteBtn.closest('.elements__card');
     card.remove();
   });
+  const $image = cardElement.querySelector('.elements__image');
+  $image.addEventListener('click', function(){
+    $fullScreenImage.classList.add('popup_opened');
+    document.querySelector('.popup__fullscreen-image').src = imageLinkValue;
+    document.querySelector('.popup__image-capture').textContent = descriptionValue;
+    document.querySelector('.popup__image-close').addEventListener('click', function (){
+      $fullScreenImage.classList.remove('popup_opened');
+    })
+  })
 
   cardElement.querySelector('.elements__description').textContent = descriptionValue;
   cardElement.querySelector('.elements__image').src = imageLinkValue;
+  cardElement.querySelector('.elements__image').setAttribute('alt', 'Фото ${descriptionValue}');
   $elements.prepend(cardElement);
 }
 
