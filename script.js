@@ -125,7 +125,7 @@ function addCard (descriptionValue, imageLinkValue) {
 
   cardElement.querySelector('.elements__description').textContent = descriptionValue;
   cardElement.querySelector('.elements__image').src = imageLinkValue;
-  cardElement.querySelector('.elements__image').setAttribute('alt', 'Фото ${descriptionValue}');
+  cardElement.querySelector('.elements__image').setAttribute('alt', descriptionValue);
   $elements.prepend(cardElement);
 }
 
