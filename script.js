@@ -48,7 +48,8 @@ loadCards();
 
 
 function openEditProfile() {
-  $popupEditProfile.classList.add('popup_opened');
+  $popupEditProfile.style.visibility = 'visible';
+  $popupEditProfile.style.opacity = '1';
   $profileNameInput.value = $profileName.textContent;
   $profileAboutInput.value = $profileAbout.textContent;
 }
@@ -56,7 +57,8 @@ function openEditProfile() {
 $profileEditBtn.addEventListener('click', openEditProfile);
 
 function closeEditProfile() {
-  $popupEditProfile.classList.remove('popup_opened');
+  $popupEditProfile.style.visibility = 'hidden';
+  $popupEditProfile.style.opacity = '0';
   $profileName.value = $profileName.textContent;
   $profileAbout.value = $profileAbout.textContent;
 }
@@ -74,18 +76,27 @@ function editProfile(evt) {
     else {
     $profileName.textContent = $profileNameInput.value;
     $profileAbout.textContent = $profileAboutInput.value;
-    $popupEditProfile.classList.remove('popup_opened');
+    $popupEditProfile.style.visibility = 'hidden';
+    $popupEditProfile.style.opacity = '0';
     }
 }
 $profileSubmitBtn.addEventListener('click', editProfile);
 
-function openCloseAddElement () {
-  $popupAddElement.classList.toggle('popup_opened');
+function openAddElement () {
+  $popupAddElement.style.visibility = 'visible';
+  $popupAddElement.style.opacity = '1';
   $popupAddElement.querySelector('.edit-form__input[name=description]').value = "";
   $popupAddElement.querySelector('.edit-form__input[name=link]').value = "";
 }
-$addElementBtn.addEventListener('click', openCloseAddElement);
-$closeAddElementBtn.addEventListener('click', openCloseAddElement);
+$addElementBtn.addEventListener('click', openAddElement);
+
+function closeAddElement () {
+  $popupAddElement.style.visibility = 'hidden';
+  $popupAddElement.style.opacity = '0';
+  $popupAddElement.querySelector('.edit-form__input[name=description]').value = "";
+  $popupAddElement.querySelector('.edit-form__input[name=link]').value = "";
+}
+$closeAddElementBtn.addEventListener('click', closeAddElement);
 
 
 function addCard (descriptionValue, imageLinkValue) {
@@ -102,11 +113,13 @@ function addCard (descriptionValue, imageLinkValue) {
   });
   const $image = cardElement.querySelector('.elements__image');
   $image.addEventListener('click', function(){
-    $fullScreenImage.classList.add('popup_opened');
+    $fullScreenImage.style.visibility = 'visible';
+    $fullScreenImage.style.opacity = '1';
     document.querySelector('.popup__fullscreen-image').src = imageLinkValue;
     document.querySelector('.popup__image-capture').textContent = descriptionValue;
     document.querySelector('.popup__image-close').addEventListener('click', function (){
-      $fullScreenImage.classList.remove('popup_opened');
+      $fullScreenImage.style.visibility = 'hidden';
+      $fullScreenImage.style.opacity = '0';
     })
   })
 
@@ -120,9 +133,18 @@ $addElementSubmitBtn.addEventListener('click', function(evt) {
   evt.preventDefault();
   const description = $popupAddElement.querySelector('.edit-form__input[name=description]');
   const link = $popupAddElement.querySelector('.edit-form__input[name=link]');
+  if (description.value.length === 0) {
+    alert("Пожалуйста, оставьте описание для фото")
+  }
+  else if(link.value.length === 0) {
+    alert("Пожалуйста, укажите ссылку на картинку")
+  }
+  else {
   addCard(description.value, link.value);
-  $popupAddElement.classList.remove('popup_opened');
+  $popupAddElement.style.visibility = 'hidden';
+  $popupAddElement.style.opacity = '0';
   description.value = "";
   link.value = "";
+  }
 });
 
