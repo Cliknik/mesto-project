@@ -23,13 +23,15 @@
 @import "../blocks/elements/__image/elements__image.css";
 @import "../blocks/elements/__description/elements__description.css";
 @import "../blocks/elements/__like/elements__like.css";
-@import "../blocks/elements/__like/_status/elements__like_status_active.css";
-@import "../blocks/elements/__like/_status/elements__like_status_inactive.css";
+@import "../blocks/elements/__like/_active/elements__like_active.css";
 
 @import "../blocks/footer/footer.css";
 
 @import "../blocks/popup/popup.css";
-@import "../blocks/popup/_opened/popup_opened.css";
+@import "../blocks/popup/_layout/popup_layout_form.css";
+@import "../blocks/popup/_layout/popup_layout_image.css";
+@import "../blocks/popup/_visibility/popup_visibility_invisible.css";
+@import "../blocks/popup/_visibility/popup_visibility_invisible.css";
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/__fullscreen-image/popup__fullscreen-image.css";
 @import "../blocks/popup/__image-container/popup__image-container.css";
