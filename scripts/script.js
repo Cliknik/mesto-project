@@ -1,52 +1,32 @@
+'use strict';
+
+import { initialCards } from './cards.js';
+
 const cardTemplate = document.querySelector('#card-template').content;
+
 const popupEditProfile = document.querySelector('#profile-edit');
+const profileEditForm = document.querySelector('#profile-edit__form');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const closeProfileEditBtn = popupEditProfile.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
-const profileSubmitBtn = popupEditProfile.querySelector('.edit-form__submit-button');
 const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
 const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
+
+const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
 const addElementForm = document.getElementById('add-content__form');
 const closeAddElementBtn = popupAddElement.querySelector('.edit-form__close-button');
-const addElementSubmitBtn = popupAddElement.querySelector('.edit-form__submit-button');
-const addElementBtn = document.querySelector('.profile__add-content');
+
 const elementsContainer = document.querySelector('.elements');
+
 const fullScreenImage = document.querySelector('#fullscreen-image');
 const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-image');
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
 const fullScreenCloseBtn = fullScreenImage.querySelector('.popup__image-close');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 function loadCards() {
-  initialCards.map(card => addCard(card.name, card.link));
+  initialCards.map(card => elementsContainer.prepend(addCard(card.name, card.link)));
 }
 loadCards();
 
@@ -66,17 +46,16 @@ profileEditBtn.addEventListener('click', function (){
   profileAboutInput.value = profileAbout.textContent;
 });
 
-closeProfileEditBtn.addEventListener('click', function() {
+profileEditForm.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileAbout.textContent = profileAboutInput.value;
   closePopup(popupEditProfile);
 })
 
-function editProfile(evt) {
-    evt.preventDefault();
-    profileName.textContent = profileNameInput.value;
-    profileAbout.textContent = profileAboutInput.value;
-    closePopup(popupEditProfile);
-}
-profileSubmitBtn.addEventListener('click', editProfile);
+closeProfileEditBtn.addEventListener('click', function() {
+  closePopup(popupEditProfile);
+})
 
 addElementBtn.addEventListener('click', function (){
   openPopup(popupAddElement);
@@ -109,21 +88,17 @@ function addCard (descriptionValue, imageLinkValue) {
   image.src = imageLinkValue;
   image.setAttribute('alt', `Фото ${descriptionValue}`);
   return cardElement;
-
 }
-
-elementsContainer.prepend(cardElement);
 
 fullScreenCloseBtn.addEventListener('click', function (){
   closePopup(fullScreenImage);
 })
 
-addElementSubmitBtn.addEventListener('click', function(evt) {
+addElementForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   const description = popupAddElement.querySelector('.edit-form__input[name=description]');
   const link = popupAddElement.querySelector('.edit-form__input[name=link]');
-  addCard(description.value, link.value);
+  elementsContainer.prepend(addCard(description.value, link.value));
   closePopup(popupAddElement);
   addElementForm.reset();
-});
-
+})
