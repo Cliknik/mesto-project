@@ -7,12 +7,11 @@ const profileSubmitBtn = popupEditProfile.querySelector('.edit-form__submit-butt
 const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
 const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
 const popupAddElement = document.querySelector('#add-content');
+const addElementForm = document.getElementById('add-content__form');
 const closeAddElementBtn = popupAddElement.querySelector('.edit-form__close-button');
 const addElementSubmitBtn = popupAddElement.querySelector('.edit-form__submit-button');
 const addElementBtn = document.querySelector('.profile__add-content');
 const elementsContainer = document.querySelector('.elements');
-const elementImage = document.querySelector('.elements__image');
-const elementDescription = document.querySelector('.elements__description');
 const fullScreenImage = document.querySelector('#fullscreen-image');
 const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-image');
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
@@ -84,7 +83,7 @@ addElementBtn.addEventListener('click', function (){
 
 closeAddElementBtn.addEventListener('click', function () {
   closePopup(popupAddElement);
-  document.getElementById('add-content__form').reset();
+  addElementForm.reset();
 })
 
 function addCard (descriptionValue, imageLinkValue) {
@@ -107,8 +106,8 @@ function addCard (descriptionValue, imageLinkValue) {
   })
 
   cardElement.querySelector('.elements__description').textContent = descriptionValue;
-  cardElement.querySelector('.elements__image').src = imageLinkValue;
-  cardElement.querySelector('.elements__image').setAttribute('alt', `Фото ${descriptionValue}`);
+  image.src = imageLinkValue;
+  image.setAttribute('alt', `Фото ${descriptionValue}`);
   elementsContainer.prepend(cardElement);
 }
 
@@ -121,9 +120,7 @@ addElementSubmitBtn.addEventListener('click', function(evt) {
   const description = popupAddElement.querySelector('.edit-form__input[name=description]');
   const link = popupAddElement.querySelector('.edit-form__input[name=link]');
   addCard(description.value, link.value);
-  popupAddElement.style.visibility = 'hidden';
-  popupAddElement.style.opacity = '0';
-  description.value = "";
-  link.value = "";
+  closePopup(popupAddElement);
+  addElementForm.reset();
 });
 
