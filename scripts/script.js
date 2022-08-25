@@ -1,3 +1,4 @@
+const cardTemplate = document.querySelector('#card-template').content;
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const closeProfileEditBtn = popupEditProfile.querySelector('.edit-form__close-button');
@@ -87,7 +88,6 @@ closeAddElementBtn.addEventListener('click', function () {
 })
 
 function addCard (descriptionValue, imageLinkValue) {
-  const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
   cardElement.querySelector('.elements__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('elements__like_active');
@@ -108,8 +108,11 @@ function addCard (descriptionValue, imageLinkValue) {
   cardElement.querySelector('.elements__description').textContent = descriptionValue;
   image.src = imageLinkValue;
   image.setAttribute('alt', `Фото ${descriptionValue}`);
-  elementsContainer.prepend(cardElement);
+  return cardElement;
+
 }
+
+elementsContainer.prepend(cardElement);
 
 fullScreenCloseBtn.addEventListener('click', function (){
   closePopup(fullScreenImage);
