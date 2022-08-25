@@ -26,7 +26,7 @@ const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-ca
 const fullScreenCloseBtn = fullScreenImage.querySelector('.popup__image-close');
 
 function loadCards() {
-  initialCards.map(card => elementsContainer.prepend(addCard(card.name, card.link)));
+  initialCards.forEach((card) => elementsContainer.prepend(addCard(card.name, card.link)));
 }
 loadCards();
 
