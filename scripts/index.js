@@ -31,13 +31,11 @@ function loadCards() {
 loadCards();
 
 function openPopup (targetPopup) {
-  targetPopup.classList.remove('popup_visibility_invisible');
-  targetPopup.classList.add('popup_visibility_visible');
+  targetPopup.classList.toggle('popup_opened');
 }
 
 function closePopup (targetPopup) {
-  targetPopup.classList.add('popup_visibility_invisible');
-  targetPopup.classList.remove('popup_visibility_visible');
+  targetPopup.classList.toggle('popup_opened');
 }
 
 profileEditBtn.addEventListener('click', function (){

@@ -30,8 +30,7 @@
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/_layout/popup_layout_form.css";
 @import "../blocks/popup/_layout/popup_layout_image.css";
-@import "../blocks/popup/_visibility/popup_visibility_invisible.css";
-@import "../blocks/popup/_visibility/popup_visibility_invisible.css";
+@import "../blocks/popup/_opened/popup_opened.css";
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/__fullscreen-image/popup__fullscreen-image.css";
 @import "../blocks/popup/__image-container/popup__image-container.css";
