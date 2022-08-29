@@ -31,11 +31,11 @@ function loadCards() {
 loadCards();
 
 function openPopup (targetPopup) {
-  targetPopup.classList.toggle('popup_opened');
+  targetPopup.classList.add('popup_opened');
 }
 
 function closePopup (targetPopup) {
-  targetPopup.classList.toggle('popup_opened');
+  targetPopup.classList.remove('popup_opened');
 }
 
 profileEditBtn.addEventListener('click', function (){
