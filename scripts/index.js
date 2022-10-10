@@ -25,6 +25,8 @@ const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-imag
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
 const fullScreenCloseBtn = fullScreenImage.querySelector('.popup__image-close');
 
+const popup = document.querySelectorAll('.popup');
+
 function loadCards() {
   initialCards.forEach((card) => elementsContainer.prepend(addCard(card.name, card.link)));
 }
@@ -37,6 +39,23 @@ function openPopup (targetPopup) {
 function closePopup (targetPopup) {
   targetPopup.classList.remove('popup_opened');
 }
+
+function escapeHandler(evt) {
+  if (evt.key === 'Escape') {
+    popup.forEach((pop) => pop.classList.remove('popup_opened'))
+  }
+}
+
+function layoutHandler(evt) {
+  console.log(evt.target)
+  if (evt.target.classList.contains('popup')) {
+    evt.target.classList.remove('popup_opened')
+  }
+}
+
+document.addEventListener('keydown', escapeHandler);
+
+popup.forEach((pop) => pop.addEventListener('click', layoutHandler))
 
 profileEditBtn.addEventListener('click', function (){
   openPopup(popupEditProfile);
@@ -100,3 +119,5 @@ addElementForm.addEventListener('submit', function(evt) {
   closePopup(popupAddElement);
   addElementForm.reset();
 })
+
+
