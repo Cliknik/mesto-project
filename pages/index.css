@@ -41,9 +41,12 @@
 @import "../blocks/edit-form/__title/edit-form__title.css";
 @import "../blocks/edit-form/__user-info/edit-form__user-info.css";
 @import "../blocks/edit-form/__input/edit-form__input.css";
+@import "../blocks/edit-form/__input/_type/edit-form__input_type_error.css";
 @import "../blocks/edit-form/__submit-button/edit-form__submit-button.css";
+@import "../blocks/edit-form/__submit-button/_inactive/edit-form__submit-button_inactive.css";
 @import "../blocks/edit-form/__close-button/edit-form__close-button.css";
 @import "../blocks/edit-form/__error-message/edit-form__error-message.css";
+@import "../blocks/edit-form/__error-message/_active/edit-form__error-message_active.css";
 @import "../blocks/edit-form/__field/edit-form__field.css";
 
 @import "../blocks/footer/footer.css";

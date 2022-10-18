@@ -1,0 +1,8 @@
+.edit-form__submit-button_inactive {
+  border: 1px black solid;
+  color: black;
+  background-color: white;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
