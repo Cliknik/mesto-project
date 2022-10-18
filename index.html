@@ -41,11 +41,17 @@
   </div>
   <div class="popup popup_layout_form" id="profile-edit">
     <div class="popup__container">
-      <form class="edit-form" name="user-info" id="profile-edit__form">
+      <form class="edit-form" name="user-info" id="profile-edit__form" novalidate>
         <h2 class="edit-form__title">Редактировать профиль</h2>
         <fieldset class="edit-form__user-info">
-          <input type="text" class="edit-form__input" name="name" value="Жак-Ив Кусто">
-          <input type="text" class="edit-form__input" name="about" value="Исследователь океана">
+          <label class="edit-form__field">
+            <input type="text" class="edit-form__input" name="name" id="name-input" value="Жак-Ив Кусто" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ\s-]+$" data-error-message="Для ввода доступны только буквы, пробелы и дефисы" required>
+            <span class="edit-form__error-message name-input-error">Ошибка</span>
+          </label>
+          <label class="edit-form__field">
+            <input type="text" class="edit-form__input" name="about" id="about-input" value="Исследователь океана" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-ЯёЁ\s-^0-9]+$" data-error-message="Для ввода доступны только буквы, пробелы и дефисы" required>
+            <span class="edit-form__error-message about-input-error"></span>
+          </label>
           <button class="edit-form__submit-button" type="submit">Сохранить</button>
         </fieldset>
         <button class="edit-form__close-button" type="button"></button>
@@ -63,11 +69,17 @@
   </div>
   <div class="popup popup_layout_form" id="add-content">
     <div class="popup__container">
-      <form class="edit-form" name="content-info" id="add-content__form">
+      <form class="edit-form" name="content-info" id="add-content__form" novalidate>
         <h2 class="edit-form__title">Новое место</h2>
         <fieldset class="edit-form__user-info">
-          <input type="text" class="edit-form__input" name="description" placeholder="Название">
-          <input type="text" class="edit-form__input" name="link" placeholder="Ссылка на картинку">
+          <label class="edit-form__field">
+            <input type="text" class="edit-form__input" name="description" id="description-input" placeholder="Название" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-ЯёЁ\s-]+$" data-error-message="Для ввода доступны только буквы, пробелы и дефисы" required>
+            <span class="edit-form__error-message description-input-error"></span>
+          </label>
+          <label class="edit-form__field">
+            <input type="url" class="edit-form__input" name="link" id="link-input" placeholder="Ссылка на картинку" required>
+            <span class="edit-form__error-message link-input-error"></span>
+          </label>
           <button class="edit-form__submit-button" type="submit">Сохранить</button>
         </fieldset>
         <button class="edit-form__close-button" type="button"></button>

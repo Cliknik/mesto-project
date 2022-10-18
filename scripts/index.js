@@ -47,7 +47,6 @@ function escapeHandler(evt) {
 }
 
 function layoutHandler(evt) {
-  console.log(evt.target)
   if (evt.target.classList.contains('popup')) {
     evt.target.classList.remove('popup_opened')
   }
@@ -121,3 +120,4 @@ addElementForm.addEventListener('submit', function(evt) {
 })
 
 
+const formElement = document.querySelector('.edit-form');

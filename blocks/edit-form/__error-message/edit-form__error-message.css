@@ -1,0 +1,11 @@
+.edit-form__error-message {
+  position: absolute;
+  top: calc(100% + 5px);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+  padding: 5px 0 13px 36px;
+  color: #FF0000;
+  display: block;
+}

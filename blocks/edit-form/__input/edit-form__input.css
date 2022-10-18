@@ -6,22 +6,6 @@
   line-height: 17px;
   color: black;
   text-align: left;
-  max-width: 358px;
-  margin: 48px 0 30px 36px;
-  box-sizing: border-box;
   outline: none;
-}
-
-.edit-form__input:nth-child(2) {
-  margin: 0 0 48px 36px;
-}
-
-@media screen and (max-width: 918px) {
-  .edit-form__input {
-    max-width: 238px;
-    margin: 75px 22px 30px;
-  }
-  .edit-form__input:nth-child(2) {
-    margin: 0 22px 45px;
-  }
+  width: 100%;
 }

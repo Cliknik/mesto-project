@@ -1,0 +1,20 @@
+.edit-form__field {
+  position: relative;
+  max-width: 358px;
+  margin: 48px 0 30px 36px;
+  box-sizing: border-box;
+}
+
+.edit-form__field:nth-child(2) {
+  margin: 0 0 48px 36px;
+}
+
+@media screen and (max-width: 918px) {
+  .edit-form__field {
+    max-width: 238px;
+    margin: 75px 22px 30px;
+  }
+  .edit-form__field:nth-child(2) {
+    margin: 0 22px 45px;
+  }
+}
