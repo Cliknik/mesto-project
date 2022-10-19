@@ -25,7 +25,7 @@ const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-imag
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
 const fullScreenCloseBtn = fullScreenImage.querySelector('.popup__image-close');
 
-const popup = document.querySelectorAll('.popup');
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 function loadCards() {
   initialCards.forEach((card) => elementsContainer.prepend(addCard(card.name, card.link)));
@@ -42,7 +42,10 @@ function closePopup (targetPopup) {
 
 function escapeHandler(evt) {
   if (evt.key === 'Escape') {
-    popup.forEach((pop) => pop.classList.remove('popup_opened'))
+    popupList.forEach(function(pop) {
+      pop.classList.remove('popup_opened');
+    });
+    addElementForm.reset();
   }
 }
 
@@ -54,7 +57,7 @@ function layoutHandler(evt) {
 
 document.addEventListener('keydown', escapeHandler);
 
-popup.forEach((pop) => pop.addEventListener('click', layoutHandler))
+popupList.forEach((pop) => pop.addEventListener('click', layoutHandler))
 
 profileEditBtn.addEventListener('click', function (){
   openPopup(popupEditProfile);
@@ -119,5 +122,80 @@ addElementForm.addEventListener('submit', function(evt) {
   addElementForm.reset();
 })
 
+//Показывам сообщение об ошибке
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('edit-form__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('edit-form__error-message_active');
+};
 
-const formElement = document.querySelector('.edit-form');
+//Скрываем сообщение об ошибке
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('edit-form__input_type_error');
+  errorElement.textContent = '';
+  errorElement.classList.remove('edit-form__error-message_active');
+};
+
+//Првоеряем валидность вводимых данных
+const checkValidity = (formElement, inputElement) => {
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+  }
+  else {
+    inputElement.setCustomValidity('');
+  }
+
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage)
+  }
+  else {
+    hideInputError(formElement, inputElement);
+  }
+}
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+//Меняем состоянии кнопки "Сохранить"
+const toggleSubmitButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('edit-form__submit-button_inactive');
+    buttonElement.setAttribute('disabled', 'disabled');
+  }
+  else {
+    buttonElement.classList.remove('edit-form__submit-button_inactive');
+    buttonElement.removeAttribute('disabled');
+  }
+};
+
+//Накидываем слушатели на поля формы
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.edit-form__input'))
+  const buttonElement = formElement.querySelector('.edit-form__submit-button')
+  toggleSubmitButtonState(inputList, buttonElement);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function() {
+      checkValidity(formElement, inputElement);
+      toggleSubmitButtonState(inputList, buttonElement);
+    });
+    inputElement.addEventListener('keydown', escapeHandler);
+  });
+};
+
+//Включаем валидацию
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.edit-form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function(evt) {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();
