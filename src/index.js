@@ -4,7 +4,6 @@ import './index.css';
 import { loadCards, addCard, fullScreenCloseBtn, fullScreenImage } from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
-import {overlayHandler} from './components/utils.js';
 
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.querySelector('#profile-edit__form');
@@ -22,8 +21,6 @@ const closeAddElementBtn = popupAddElement.querySelector('.edit-form__close-butt
 
 export const elementsContainer = document.querySelector('.elements');
 
-const popupList = Array.from(document.querySelectorAll('.popup'));
-
 loadCards();
 
 enableValidation({
@@ -34,9 +31,6 @@ enableValidation({
   inputErrorClass: 'edit-form__input_type_error',
   errorClass: 'edit-form__error-message_active'
 });
-
-
-popupList.forEach((pop) => pop.addEventListener('click', overlayHandler))
 
 profileEditBtn.addEventListener('click', function (){
   openPopup(popupEditProfile);
