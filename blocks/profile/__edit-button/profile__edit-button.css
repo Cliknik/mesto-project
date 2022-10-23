@@ -1,5 +1,5 @@
 .profile__edit-button {
-  background-image: url(../../../images/edit-button.svg);
+  background-image: url(../../../src/images/edit-button.svg);
   border: none;
   background-color: transparent;
   height: 24px;
@@ -20,6 +20,6 @@
     margin-top: 34px;
     height: 18px;
     width: 18px;
-    background-image: url(../../../images/edit-button_mini.svg);
+    background-image: url(../../../src/images/edit-button_mini.svg);
   }
 }

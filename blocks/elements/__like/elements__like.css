@@ -9,7 +9,7 @@
   margin-right: 20px;
   background-repeat: no-repeat;
   transition: opacity 0.2s;
-  background-image: url(../../../images/button-like_disabled.svg);
+  background-image: url(../../../src/images/button-like_disabled.svg);
 }
 
 .elements__like:hover {
