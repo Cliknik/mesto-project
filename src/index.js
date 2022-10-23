@@ -3,8 +3,8 @@
 import './index.css';
 import { loadCards, addCard, fullScreenCloseBtn, fullScreenImage } from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
-import enableValidation from './components/validation.js';
-import {overlayHandler, escapeHandler} from './components/utils.js';
+import {enableValidation} from './components/validation.js';
+import {overlayHandler} from './components/utils.js';
 
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.querySelector('#profile-edit__form');
@@ -22,11 +22,19 @@ const closeAddElementBtn = popupAddElement.querySelector('.edit-form__close-butt
 
 export const elementsContainer = document.querySelector('.elements');
 
-export const popupList = Array.from(document.querySelectorAll('.popup'));
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 loadCards();
 
-document.addEventListener('keydown', escapeHandler);
+enableValidation({
+  formSelector: '.edit-form',
+  inputSelector: '.edit-form__input',
+  submitButtonSelector: '.edit-form__submit-button',
+  inactiveButtonClass: 'edit-form__submit-button_inactive',
+  inputErrorClass: 'edit-form__input_type_error',
+  errorClass: 'edit-form__error-message_active'
+});
+
 
 popupList.forEach((pop) => pop.addEventListener('click', overlayHandler))
 
@@ -67,6 +75,4 @@ addElementForm.addEventListener('submit', function(evt) {
   elementsContainer.prepend(addCard(description.value, link.value));
   closePopup(popupAddElement);
   addElementForm.reset();
-})
-
-enableValidation();
+});
