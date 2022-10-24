@@ -9,10 +9,4 @@ export function escapeHandler(evt) {
   }
 }
 
-//Слушатель оверлея для закрытия модалок
-export function overlayHandler(evt) {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  }
-}
 

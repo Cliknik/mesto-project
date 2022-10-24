@@ -1,14 +1,15 @@
 'use strict';
 
 import './index.css';
-import { loadCards, addCard, fullScreenCloseBtn, fullScreenImage } from './components/cards.js';
+import { loadCards, addCard} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
 
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
 const popupEditProfile = document.querySelector('#profile-edit');
-const profileEditForm = document.querySelector('#profile-edit__form');
+const profileEditForm = document.forms['user-info'];
 const profileEditBtn = document.querySelector('.profile__edit-button');
-const closeProfileEditBtn = popupEditProfile.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
@@ -16,8 +17,9 @@ const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name
 
 const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
-export const addElementForm = document.getElementById('add-content__form');
-const closeAddElementBtn = popupAddElement.querySelector('.edit-form__close-button');
+const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
+const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
+const addElementForm = document.forms['content-info'];
 
 export const elementsContainer = document.querySelector('.elements');
 
@@ -32,6 +34,18 @@ enableValidation({
   errorClass: 'edit-form__error-message_active'
 });
 
+//На каждый попап навешиваем слушатель крестика и клика по оверлею
+popupList.forEach((popup) => {
+  addEventListener('mousedown', function(evt){
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup-close')) {
+      closePopup(popup);
+    }
+  })
+})
+
 profileEditBtn.addEventListener('click', function (){
   openPopup(popupEditProfile);
   profileNameInput.value = profileName.textContent;
@@ -45,28 +59,13 @@ profileEditForm.addEventListener('submit', function(evt) {
   closePopup(popupEditProfile);
 })
 
-closeProfileEditBtn.addEventListener('click', function() {
-  closePopup(popupEditProfile);
-})
-
 addElementBtn.addEventListener('click', function (){
   openPopup(popupAddElement);
 });
 
-closeAddElementBtn.addEventListener('click', function () {
-  closePopup(popupAddElement);
-  addElementForm.reset();
-})
-
-fullScreenCloseBtn.addEventListener('click', function (){
-  closePopup(fullScreenImage);
-})
-
 addElementForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  const description = popupAddElement.querySelector('.edit-form__input[name=description]');
-  const link = popupAddElement.querySelector('.edit-form__input[name=link]');
-  elementsContainer.prepend(addCard(description.value, link.value));
+  elementsContainer.prepend(addCard(newImageDescription.value, newImageUrl.value));
   closePopup(popupAddElement);
-  addElementForm.reset();
+  evt.target.reset();
 });

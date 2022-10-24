@@ -33,10 +33,9 @@ export const initialCards = [
 
 const cardTemplate = document.querySelector('#card-template').content;
 
-export const fullScreenImage = document.querySelector('#fullscreen-image');
+const fullScreenImage = document.querySelector('#fullscreen-image');
 const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-image');
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
-export const fullScreenCloseBtn = fullScreenImage.querySelector('.popup__image-close');
 
 //Загружаем крточки из стокового массива при открыти страницы
 export function loadCards() {
