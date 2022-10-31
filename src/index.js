@@ -114,6 +114,9 @@ editAvatarForm.addEventListener('submit', (evt) => {
     .then((json) => {
       updateUserInfo(profileAvatar, profileName, profileAbout, json);
     })
+    .catch((err) => {
+      console.log(`Что-то пошло не так. Ошбика: ${err}`);
+    })
   closePopup(popupAvatarEdit);
   evt.target.reset();
 })
