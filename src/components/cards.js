@@ -43,6 +43,7 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
         .then((res) => {
           likesCounter.textContent = res['likes'].length;
           evt.target.classList.toggle('elements__like_active');
+          return likes = res['likes'];
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
@@ -53,11 +54,13 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
         .then((res) => {
           likesCounter.textContent = res['likes'].length;
           evt.target.classList.toggle('elements__like_active');
+          return likes = res['likes'];
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
         })
     }
+    console.log(likes)
   });
 
   //Ставим кнопку удаления только на добавленные мною карточки
