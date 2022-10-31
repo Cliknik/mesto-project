@@ -1,29 +1,42 @@
 'use strict';
 
 import './index.css';
-import { loadCards, addCard} from './components/cards.js';
+import {addCard, renderInitialCards} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
+import {getInitialCards , editProfileInfo, getUserInfo, postNewCard} from './components/api';
+import {updateUserInfo} from "./components/utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.forms['user-info'];
 const profileEditBtn = document.querySelector('.profile__edit-button');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
-const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
+export const profileName = document.querySelector('.profile__name');
+export const profileAbout = document.querySelector('.profile__about');
+export const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
+export const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
 
 const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
-const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
-const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
+export const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
+export const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
 const addElementForm = document.forms['content-info'];
 
 export const elementsContainer = document.querySelector('.elements');
 
-loadCards();
+getUserInfo()
+  .then((data) => {
+  updateUserInfo(data)
+  const myId = data['_id'];
+  getInitialCards()
+    .then((json) => {
+      renderInitialCards(json, myId)
+    })
+  .catch((err) => {
+    console.log(`Что-то пошло не так. Ошбика: ${err}`);
+  })
+})
 
 enableValidation({
   formSelector: '.edit-form',
@@ -54,8 +67,7 @@ profileEditBtn.addEventListener('click', function (){
 
 profileEditForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileAbout.textContent = profileAboutInput.value;
+  editProfileInfo();
   closePopup(popupEditProfile);
 })
 
@@ -65,7 +77,7 @@ addElementBtn.addEventListener('click', function (){
 
 addElementForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  elementsContainer.prepend(addCard(newImageDescription.value, newImageUrl.value));
+  postNewCard();
   closePopup(popupAddElement);
   evt.target.reset();
 });

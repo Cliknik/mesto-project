@@ -1,12 +1,8 @@
 .elements__like {
-  grid-area: like;
   background-color: transparent;
   border: none;
   height: 19px;
   width: 22px;
-  align-self: center;
-  justify-self: end;
-  margin-right: 20px;
   background-repeat: no-repeat;
   transition: opacity 0.2s;
   background-image: url(../../../src/images/button-like_disabled.svg);

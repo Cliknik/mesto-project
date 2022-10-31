@@ -1,0 +1,8 @@
+.elements__like-area {
+  grid-area: like;
+  align-self: center;
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
