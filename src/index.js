@@ -4,7 +4,7 @@ import './index.css';
 import {addCard, renderInitialCards} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
-import {getInitialCards , editProfileInfo, getUserInfo, postNewCard} from './components/api';
+import {getInitialCards, editProfileInfo, getUserInfo, postNewCard, postAvatar} from './components/api';
 import {updateUserInfo} from "./components/utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
@@ -21,6 +21,9 @@ const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name
 //Переменные для измененя аватара
 const avatarEditBtn = document.querySelector('.profile__avatar-edit-button');
 const profileAvatar = document.querySelector('.profile__avatar');
+const popupAvatarEdit = document.querySelector('#avatar-edit');
+const editAvatarForm = document.forms['user-avatar'];
+const editAvatarInput = editAvatarForm.querySelector('.edit-form__input');
 
 //Переменные для добавления новых карточек
 const addElementBtn = document.querySelector('.profile__add-content');
@@ -100,3 +103,17 @@ addElementForm.addEventListener('submit', function(evt) {
   closePopup(popupAddElement);
   evt.target.reset();
 });
+
+avatarEditBtn.addEventListener('click', () =>{
+  openPopup(popupAvatarEdit);
+})
+
+editAvatarForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  postAvatar(editAvatarInput.value)
+    .then((json) => {
+      updateUserInfo(profileAvatar, profileName, profileAbout, json);
+    })
+  closePopup(popupAvatarEdit);
+  evt.target.reset();
+})
