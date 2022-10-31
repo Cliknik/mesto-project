@@ -1,7 +1,6 @@
 import {profileNameInput, profileAboutInput, newImageDescription, newImageUrl, elementsContainer} from "../index";
 import {addCard} from "./cards";
 import {updateUserInfo} from "./utils";
-import {logPlugin} from "@babel/preset-env/lib/debug";
 
 //Настройки для запросов
 const config = {
@@ -97,6 +96,31 @@ export function postNewCard(){
 //Удаление карточки
 export function deleteCard(cardId){
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+    .then((res) => {
+      return Promise.reject(res.status)
+    })
+}
+
+//Ставим лайк
+export function putLike(cardId){
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'PUT',
+    headers: config.headers
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res.status)
+    })
+}
+
+//Убираем лайк
+export function deleteLike(cardId){
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'DELETE',
     headers: config.headers
   })

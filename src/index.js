@@ -1,7 +1,7 @@
 'use strict';
 
 import './index.css';
-import {addCard, renderInitialCards} from './components/cards.js';
+import {renderInitialCards} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
 import {getInitialCards , editProfileInfo, getUserInfo, postNewCard} from './components/api';
