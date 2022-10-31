@@ -10,13 +10,14 @@ const fullScreenImage = document.querySelector('#fullscreen-image');
 const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-image');
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
 
-//Проверяем, ставил ли пользователь лайк на карточку
+//Проверяем, ставил ли я лайк на карточку
 function hasMyLike(myId, likes) {
   return likes.some((obj) => {
-    return obj._id == myId;
+    return obj['_id'] == myId;
   })
 }
 
+//Отрисовка карточек с сервера
 export function renderInitialCards(json, myId) {
   json.forEach((card) => {
     elementsContainer.prepend(addCard(card.name, card.link, card['owner']['_id'], myId, card['likes'], card['_id']))
@@ -41,7 +42,8 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
     if (hasMyLike(myId, likes)) {
       deleteLike(cardId)
         .then((res) => {
-          likesCounter.textContent = res['likes'].length
+          likesCounter.textContent = res['likes'].length;
+          evt.target.classList.toggle('elements__like_active');
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
@@ -50,13 +52,13 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
     else {
       putLike(cardId)
         .then((res) => {
-          likesCounter.textContent = res['likes'].length
+          likesCounter.textContent = res['likes'].length;
+          evt.target.classList.toggle('elements__like_active');
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
         })
     }
-    evt.target.classList.toggle('elements__like_active');
   });
 
   //Ставим кнопку удаления только на добавленные мною карточки

@@ -1,7 +1,7 @@
 'use strict';
 
 import './index.css';
-import {renderInitialCards} from './components/cards.js';
+import {addCard, renderInitialCards} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
 import {getInitialCards , editProfileInfo, getUserInfo, postNewCard} from './components/api';
@@ -67,7 +67,13 @@ profileEditBtn.addEventListener('click', function (){
 
 profileEditForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  editProfileInfo();
+  editProfileInfo(profileNameInput.value, profileAboutInput.value)
+    .then((json) => {
+      updateUserInfo(json);
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так. Ошбика: ${err}`);
+    })
   closePopup(popupEditProfile);
 })
 
@@ -77,7 +83,13 @@ addElementBtn.addEventListener('click', function (){
 
 addElementForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
-  postNewCard();
+  postNewCard(newImageDescription.value, newImageUrl.value)
+    .then((json) => {
+      elementsContainer.append(addCard(json['name'], json['link'], json['owner']['_id'], json['owner']['_id'], json['likes'], json['_id']));
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так. Ошбика: ${err}`);
+    })
   closePopup(popupAddElement);
   evt.target.reset();
 });

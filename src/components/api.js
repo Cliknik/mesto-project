@@ -1,7 +1,3 @@
-import {profileNameInput, profileAboutInput, newImageDescription, newImageUrl, elementsContainer} from "../index";
-import {addCard} from "./cards";
-import {updateUserInfo} from "./utils";
-
 //Настройки для запросов
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-16',
@@ -40,19 +36,16 @@ export function getInitialCards(){
       }
       return Promise.reject(res.status)
     })
-    .catch((err) => {
-      console.log(`Что-то пошло не так. Ошбика: ${err}`);
-    })
 }
 
 //Редактирование профиля
-export function editProfileInfo(){
-  fetch(`${config.baseUrl}/users/me`, {
+export function editProfileInfo(name, about){
+  return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
     body: JSON.stringify({
-      name: `${profileNameInput.value}`,
-      about: `${profileAboutInput.value}`
+      name: `${name}`,
+      about: `${about}`
     })
   })
     .then((res) => {
@@ -61,22 +54,16 @@ export function editProfileInfo(){
       }
       return Promise.reject(res.status)
     })
-    .then((json) => {
-      updateUserInfo(json);
-    })
-    .catch((err) => {
-      console.log(`Что-то пошло не так. Ошбика: ${err}`);
-    })
 }
 
 //Закгрузка новой карточки на страницу
-export function postNewCard(){
-  fetch(`${config.baseUrl}/cards`, {
+export function postNewCard(name, link){
+  return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify({
-      name: `${newImageDescription.value}`,
-      link: `${newImageUrl.value}`
+      name: `${name}`,
+      link: `${link}`
     })
   })
     .then((res) => {
@@ -84,12 +71,6 @@ export function postNewCard(){
         return res.json();
       }
       return Promise.reject(res.status)
-    })
-    .then((json) => {
-      elementsContainer.append(addCard(json['name'], json['link'], json['owner']['_id'], json['owner']['_id']));
-    })
-    .catch((err) => {
-      console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
 }
 
