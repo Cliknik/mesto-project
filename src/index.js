@@ -9,7 +9,7 @@ import {updateUserInfo} from "./components/utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
-//Переменные для работы с профилем
+//Переменные для работы с описанием профиля
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.forms['user-info'];
 const profileEditBtn = document.querySelector('.profile__edit-button');
