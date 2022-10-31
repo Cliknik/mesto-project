@@ -113,3 +113,20 @@ export function deleteLike(cardId){
     })
 }
 
+//Меняем аватар
+export function postAvatar(avatarLink){
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: `${avatarLink}`
+    })
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res.status)
+    })
+}
+

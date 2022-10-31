@@ -9,6 +9,7 @@ import {updateUserInfo} from "./components/utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
+//Переменные для работы с профилем
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.forms['user-info'];
 const profileEditBtn = document.querySelector('.profile__edit-button');
@@ -17,12 +18,14 @@ const profileAbout = document.querySelector('.profile__about');
 const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
 const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
 
+//Переменные для добавления новых карточек
 const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
 const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
 const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
 const addElementForm = document.forms['content-info'];
 
+//Контейнер с карточками
 const elementsContainer = document.querySelector('.elements');
 
 getUserInfo()
