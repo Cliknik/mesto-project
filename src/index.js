@@ -12,26 +12,26 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 const popupEditProfile = document.querySelector('#profile-edit');
 const profileEditForm = document.forms['user-info'];
 const profileEditBtn = document.querySelector('.profile__edit-button');
-export const profileName = document.querySelector('.profile__name');
-export const profileAbout = document.querySelector('.profile__about');
-export const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
-export const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
+const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
 
 const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
-export const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
-export const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
+const newImageDescription = popupAddElement.querySelector('.edit-form__input[name=description]');
+const newImageUrl = popupAddElement.querySelector('.edit-form__input[name=link]');
 const addElementForm = document.forms['content-info'];
 
-export const elementsContainer = document.querySelector('.elements');
+const elementsContainer = document.querySelector('.elements');
 
 getUserInfo()
   .then((data) => {
-  updateUserInfo(data)
+  updateUserInfo(profileName, profileAbout, data)
   const myId = data['_id'];
   getInitialCards()
     .then((json) => {
-      renderInitialCards(json, myId)
+      renderInitialCards(elementsContainer, json, myId)
     })
   .catch((err) => {
     console.log(`Что-то пошло не так. Ошбика: ${err}`);
@@ -69,7 +69,7 @@ profileEditForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   editProfileInfo(profileNameInput.value, profileAboutInput.value)
     .then((json) => {
-      updateUserInfo(json);
+      updateUserInfo(profileName, profileAbout, json);
     })
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);

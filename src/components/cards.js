@@ -1,7 +1,6 @@
 'use strict';
 
 import {openPopup} from './modal.js';
-import {elementsContainer} from "../index.js";
 import {deleteCard, putLike, deleteLike} from "./api";
 
 const cardTemplate = document.querySelector('#card-template').content;
@@ -18,9 +17,9 @@ function hasMyLike(myId, likes) {
 }
 
 //Отрисовка карточек с сервера
-export function renderInitialCards(json, myId) {
+export function renderInitialCards(container, json, myId) {
   json.forEach((card) => {
-    elementsContainer.prepend(addCard(card.name, card.link, card['owner']['_id'], myId, card['likes'], card['_id']))
+    container.prepend(addCard(card.name, card.link, card['owner']['_id'], myId, card['likes'], card['_id']))
   });
 }
 
