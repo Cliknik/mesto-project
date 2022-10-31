@@ -1,5 +1,5 @@
 import {profileNameInput, profileAboutInput, newImageDescription, newImageUrl, elementsContainer} from "../index";
-import {renderInitialCards, addCard} from "./cards";
+import {addCard} from "./cards";
 import {updateUserInfo} from "./utils";
 import {logPlugin} from "@babel/preset-env/lib/debug";
 
@@ -16,9 +16,7 @@ const config = {
 export function getUserInfo(){
   return fetch(`${config.baseUrl}/users/me`, {
     method: 'GET',
-    headers: {
-      authorization: '2359e7ee-1ae1-4ab3-83c5-a7acadc4381a'
-    }
+    headers: config.headers
   })
     .then((res) => {
       if(res.ok) {
@@ -35,9 +33,7 @@ export function getUserInfo(){
 export function getInitialCards(){
   return fetch(`${config.baseUrl}/cards`, {
     method: 'GET',
-    headers: {
-      authorization: '2359e7ee-1ae1-4ab3-83c5-a7acadc4381a'
-    }
+    headers: config.headers
   })
     .then((res) => {
       if (res.ok) {
@@ -54,10 +50,7 @@ export function getInitialCards(){
 export function editProfileInfo(){
   fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
-    headers: {
-      authorization: '2359e7ee-1ae1-4ab3-83c5-a7acadc4381a',
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: `${profileNameInput.value}`,
       about: `${profileAboutInput.value}`
@@ -81,10 +74,7 @@ export function editProfileInfo(){
 export function postNewCard(){
   fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
-    headers: {
-      authorization: '2359e7ee-1ae1-4ab3-83c5-a7acadc4381a',
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: `${newImageDescription.value}`,
       link: `${newImageUrl.value}`
@@ -104,4 +94,17 @@ export function postNewCard(){
     })
 }
 
+//Удаление карточки
+export function deleteCard(cardId){
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res.status)
+    })
+}
 

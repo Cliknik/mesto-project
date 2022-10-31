@@ -2,6 +2,7 @@
 
 import {openPopup} from './modal.js';
 import {elementsContainer} from "../index.js";
+import {deleteCard} from "./api";
 
 const cardTemplate = document.querySelector('#card-template').content;
 
@@ -9,14 +10,12 @@ const fullScreenImage = document.querySelector('#fullscreen-image');
 const fullScreenElement = fullScreenImage.querySelector('.popup__fullscreen-image');
 const fullScreenElementCapture = fullScreenImage.querySelector('.popup__image-capture');
 
-const likesCounter = document.querySelector('.elements__like-counter');
-
 export function renderInitialCards(json, myId) {
-  json.forEach((card) => elementsContainer.prepend(addCard(card.name, card.link, card['owner']['_id'], myId, card['likes'])));
+  json.forEach((card) => elementsContainer.prepend(addCard(card.name, card.link, card['owner']['_id'], myId, card['likes'], card['_id'])));
 }
 
 //Добавить карточку
-export function addCard (descriptionValue, imageLinkValue, userId, myId, likes) {
+export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, cardId) {
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
   cardElement.querySelector('.elements__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('elements__like_active');
@@ -28,6 +27,10 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes) 
     deleteBtn.addEventListener('click', function() {
       const card = deleteBtn.closest('.elements__card');
       card.remove();
+      deleteCard(cardId)
+        .catch((err) => {
+          console.log(`Что-то пошло не так. Ошбика: ${err}`);
+        })
     });
   }
   else {
