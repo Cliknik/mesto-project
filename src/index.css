@@ -52,6 +52,7 @@
 @import "../blocks/edit-form/__error-message/edit-form__error-message.css";
 @import "../blocks/edit-form/__error-message/_active/edit-form__error-message_active.css";
 @import "../blocks/edit-form/__field/edit-form__field.css";
+@import "../blocks/edit-form/__field/_avatar/edit-form__field_avatar.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";

@@ -60,7 +60,6 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
         })
     }
-    console.log(likes)
   });
 
   //Ставим кнопку удаления только на добавленные мною карточки
