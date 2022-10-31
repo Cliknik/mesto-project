@@ -10,8 +10,9 @@ export function escapeHandler(evt) {
 }
 
 //Меняем инфрмацию о пользователе
-export function updateUserInfo(name, about, json){
+export function updateUserInfo(avatar, name, about, json){
   name.textContent = json['name'];
   about.textContent = json['about'];
+  avatar.src = json['avatar'];
 }
 

@@ -18,6 +18,10 @@ const profileAbout = document.querySelector('.profile__about');
 const profileNameInput = popupEditProfile.querySelector('.edit-form__input[name="name"]');
 const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name="about"]');
 
+//Переменные для измененя аватара
+const avatarEditBtn = document.querySelector('.profile__avatar-edit-button');
+const profileAvatar = document.querySelector('.profile__avatar');
+
 //Переменные для добавления новых карточек
 const addElementBtn = document.querySelector('.profile__add-content');
 const popupAddElement = document.querySelector('#add-content');
@@ -30,7 +34,7 @@ const elementsContainer = document.querySelector('.elements');
 
 getUserInfo()
   .then((data) => {
-  updateUserInfo(profileName, profileAbout, data)
+  updateUserInfo(profileAvatar, profileName, profileAbout, data)
   const myId = data['_id'];
   getInitialCards()
     .then((json) => {

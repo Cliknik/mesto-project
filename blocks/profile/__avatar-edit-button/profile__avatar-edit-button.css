@@ -10,13 +10,7 @@
   background-position: center;
   position: absolute;
   z-index: 2;
-  margin-left: -150px;
-}
-
-@media screen and (max-width: 918px) {
-  .profile__avatar-edit-button {
-    margin-left: -120px;
-  }
+  margin-left: -120px;
 }
 
 .profile__avatar-edit-button:hover {
