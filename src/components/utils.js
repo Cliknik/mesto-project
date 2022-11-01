@@ -10,7 +10,12 @@ export function switchLoadingMessage(target, isLoading){
     target.textContent = 'Сохранение...'
   }
   else {
-    target.textContent = 'Сохранить'
+    if (target.id) {
+      target.textContent = 'Создать';
+    }
+    else {
+      target.textContent = 'Сохранить';
+    }
   }
 }
 

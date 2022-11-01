@@ -22,8 +22,8 @@ const profileAboutInput = popupEditProfile.querySelector('.edit-form__input[name
 const avatarEditBtn = document.querySelector('.profile__avatar-edit-button');
 const profileAvatar = document.querySelector('.profile__avatar');
 const popupAvatarEdit = document.querySelector('#avatar-edit');
-const editAvatarForm = document.forms['user-avatar'];
-const editAvatarInput = editAvatarForm.querySelector('.edit-form__input');
+const avatarEditForm = document.forms['user-avatar'];
+const avatarEditInput = avatarEditForm.querySelector('.edit-form__input');
 
 //Переменные для добавления новых карточек
 const addElementBtn = document.querySelector('.profile__add-content');
@@ -81,12 +81,12 @@ profileEditForm.addEventListener('submit', function(evt) {
   editProfileInfo(profileNameInput.value, profileAboutInput.value)
     .then((json) => {
       updateUserInfo(profileAvatar, profileName, profileAbout, json);
+      closePopup(popupEditProfile);
     })
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
     .finally(() => {
-      closePopup(popupEditProfile);
       setTimeout(() => {switchLoadingMessage(evt.submitter, false)}, 300)
     })
 })
@@ -101,13 +101,14 @@ addElementForm.addEventListener('submit', function(evt) {
   postNewCard(newImageDescription.value, newImageUrl.value)
     .then((json) => {
       elementsContainer.append(addCard(json['name'], json['link'], json['owner']['_id'], json['owner']['_id'], json['likes'], json['_id']));
+      closePopup(popupAddElement);
+      evt.target.reset();
     })
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
     .finally(() => {
-      closePopup(popupAddElement);
-      setTimeout(() => {switchLoadingMessage(evt.submitter, false); evt.target.reset();}, 300)
+      setTimeout(() => {switchLoadingMessage(evt.submitter, false);}, 300)
     })
 });
 
@@ -115,18 +116,19 @@ avatarEditBtn.addEventListener('click', () =>{
   openPopup(popupAvatarEdit);
 })
 
-editAvatarForm.addEventListener('submit', (evt) => {
+avatarEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   switchLoadingMessage(evt.submitter, true)
-  postAvatar(editAvatarInput.value)
+  postAvatar(avatarEditInput.value)
     .then((json) => {
       updateUserInfo(profileAvatar, profileName, profileAbout, json);
+      closePopup(popupAvatarEdit);
+      evt.target.reset();
     })
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
     .finally(() => {
-      closePopup(popupAvatarEdit);
-      setTimeout(() => {switchLoadingMessage(evt.submitter, false); evt.target.reset();}, 300)
+      setTimeout(() => {switchLoadingMessage(evt.submitter, false);}, 300)
     })
 })
