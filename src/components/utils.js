@@ -16,3 +16,12 @@ export function updateUserInfo(avatar, name, about, json){
   avatar.src = json['avatar'];
 }
 
+export function switchLoadingMessage(target, isLoading){
+  if (isLoading){
+    target.textContent = 'Сохранение...'
+  }
+  else {
+    target.textContent = 'Сохранить'
+  }
+}
+

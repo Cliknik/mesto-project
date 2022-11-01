@@ -5,7 +5,7 @@ import {addCard, renderInitialCards} from './components/cards.js';
 import {openPopup, closePopup} from "./components/modal.js";
 import {enableValidation} from './components/validation.js';
 import {getInitialCards, editProfileInfo, getUserInfo, postNewCard, postAvatar} from './components/api';
-import {updateUserInfo} from "./components/utils";
+import {updateUserInfo, switchLoadingMessage} from "./components/utils";
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
@@ -77,14 +77,18 @@ profileEditBtn.addEventListener('click', function (){
 
 profileEditForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
+  switchLoadingMessage(evt.submitter, true)
   editProfileInfo(profileNameInput.value, profileAboutInput.value)
     .then((json) => {
-      updateUserInfo(profileName, profileAbout, json);
+      updateUserInfo(profileAvatar, profileName, profileAbout, json);
     })
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
-  closePopup(popupEditProfile);
+    .finally(() => {
+      closePopup(popupEditProfile);
+      setTimeout(() => {switchLoadingMessage(evt.submitter, false)}, 300)
+    })
 })
 
 addElementBtn.addEventListener('click', function (){
@@ -93,6 +97,7 @@ addElementBtn.addEventListener('click', function (){
 
 addElementForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
+  switchLoadingMessage(evt.submitter, true)
   postNewCard(newImageDescription.value, newImageUrl.value)
     .then((json) => {
       elementsContainer.append(addCard(json['name'], json['link'], json['owner']['_id'], json['owner']['_id'], json['likes'], json['_id']));
@@ -100,8 +105,10 @@ addElementForm.addEventListener('submit', function(evt) {
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
-  closePopup(popupAddElement);
-  evt.target.reset();
+    .finally(() => {
+      closePopup(popupAddElement);
+      setTimeout(() => {switchLoadingMessage(evt.submitter, false); evt.target.reset();}, 300)
+    })
 });
 
 avatarEditBtn.addEventListener('click', () =>{
@@ -110,6 +117,7 @@ avatarEditBtn.addEventListener('click', () =>{
 
 editAvatarForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  switchLoadingMessage(evt.submitter, true)
   postAvatar(editAvatarInput.value)
     .then((json) => {
       updateUserInfo(profileAvatar, profileName, profileAbout, json);
@@ -117,6 +125,8 @@ editAvatarForm.addEventListener('submit', (evt) => {
     .catch((err) => {
       console.log(`Что-то пошло не так. Ошбика: ${err}`);
     })
-  closePopup(popupAvatarEdit);
-  evt.target.reset();
+    .finally(() => {
+      closePopup(popupAvatarEdit);
+      setTimeout(() => {switchLoadingMessage(evt.submitter, false); evt.target.reset();}, 300)
+    })
 })
