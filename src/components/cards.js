@@ -67,8 +67,8 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
   if (myId == userId) {
     deleteBtn.addEventListener('click', function() {
       const card = deleteBtn.closest('.elements__card');
-      card.remove();
       deleteCard(cardId)
+        .then(() => card.remove())
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
         })
