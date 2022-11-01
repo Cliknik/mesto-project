@@ -35,18 +35,18 @@ const addElementForm = document.forms['content-info'];
 //Контейнер с карточками
 const elementsContainer = document.querySelector('.elements');
 
-getUserInfo()
-  .then((data) => {
-  updateUserInfo(profileAvatar, profileName, profileAbout, data)
-  const myId = data['_id'];
+Promise.all([
+  getUserInfo(),
   getInitialCards()
-    .then((json) => {
-      renderInitialCards(elementsContainer, json, myId)
-    })
+])
+  .then(([userInfo, initialCards]) => {
+    updateUserInfo(profileAvatar, profileName, profileAbout, userInfo);
+    const myId = userInfo['_id'];
+    renderInitialCards(elementsContainer, initialCards, myId);
+  })
   .catch((err) => {
     console.log(`Что-то пошло не так. Ошбика: ${err}`);
   })
-})
 
 enableValidation({
   formSelector: '.edit-form',
