@@ -4,6 +4,8 @@
   "description": "Проект сделан при исползовании технологий:\r * HTML5;\r * JavaScript ES6.",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve"
@@ -24,6 +26,7 @@
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
