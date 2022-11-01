@@ -43,7 +43,7 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
         .then((res) => {
           likesCounter.textContent = res['likes'].length;
           evt.target.classList.toggle('elements__like_active');
-          return likes = res['likes'];
+          likes = res['likes'];
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);
@@ -54,7 +54,7 @@ export function addCard (descriptionValue, imageLinkValue, userId, myId, likes, 
         .then((res) => {
           likesCounter.textContent = res['likes'].length;
           evt.target.classList.toggle('elements__like_active');
-          return likes = res['likes'];
+          likes = res['likes'];
         })
         .catch((err) => {
           console.log(`Что-то пошло не так. Ошбика: ${err}`);

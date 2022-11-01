@@ -1,3 +1,11 @@
+//Получение запросов
+function getResponseData(res){
+  if(res.ok) {
+    return res.json();
+  }
+  return Promise.reject(res.status);
+}
+
 //Настройки для запросов
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-16',
@@ -14,13 +22,7 @@ export function getUserInfo(){
     headers: config.headers
   })
     .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status);
-    })
-    .catch((err) => {
-      console.log(`Что-то пошло не так. Ошбика: ${err}`);
+      return getResponseData(res);
     })
 }
 
@@ -31,10 +33,7 @@ export function getInitialCards(){
     headers: config.headers
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -49,10 +48,7 @@ export function editProfileInfo(name, about){
     })
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -67,10 +63,7 @@ export function postNewCard(name, link){
     })
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -81,7 +74,7 @@ export function deleteCard(cardId){
     headers: config.headers
   })
     .then((res) => {
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -92,10 +85,7 @@ export function putLike(cardId){
     headers: config.headers
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -106,10 +96,7 @@ export function deleteLike(cardId){
     headers: config.headers
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 
@@ -123,10 +110,7 @@ export function postAvatar(avatarLink){
     })
   })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(res.status)
+      return getResponseData(res);
     })
 }
 

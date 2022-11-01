@@ -1,6 +1,12 @@
-//Открытие модалок
-import {escapeHandler} from "./utils";
+//Слушатель кнопки Escape для закрытия модалок
+function escapeHandler(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
 
+//Открытие модалок
 export function openPopup (targetPopup) {
   targetPopup.classList.add('popup_opened');
   document.addEventListener('keydown', escapeHandler);
